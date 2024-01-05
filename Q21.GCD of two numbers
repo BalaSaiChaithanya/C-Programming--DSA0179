@@ -1,0 +1,23 @@
+#include <iostream>
+int findGCD(int a, int b) {
+    a = (a > 0) ? a : -a;
+    b = (b > 0) ? b : -b;
+    int gcd;
+    do {
+        gcd = a % b;
+        a = b;
+        b = gcd;
+    } while (b != 0);
+
+    return a;
+}
+int main() {
+    int num1, num2;
+    std::cout << "Enter first number: ";
+    std::cin >> num1;
+    std::cout << "Enter second number: ";
+    std::cin >> num2;
+    int gcd = findGCD(num1, num2);
+    std::cout << "GCD of " << num1 << " and " << num2 << " is: " << gcd << std::endl;
+    return 0;
+}
