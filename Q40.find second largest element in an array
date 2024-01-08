@@ -1,0 +1,44 @@
+#include <iostream>
+int findSecondLargest(const int arr[], int size) {
+    if (size < 2) {
+        std::cout << "Array should have at least two elements to find the second largest." << std::endl;
+        return -1; 
+    }
+
+    int largest = arr[0];
+    int secondLargest = arr[1];
+
+    if (secondLargest > largest) {
+        std::swap(largest, secondLargest);
+    }
+
+    for (int i = 2; i < size; ++i) {
+        if (arr[i] > largest) {
+            secondLargest = largest;
+            largest = arr[i];
+        } else if (arr[i] > secondLargest && arr[i] != largest) {
+            secondLargest = arr[i];
+        }
+    }
+
+    return secondLargest;
+}
+
+int main() {
+    const int maxSize = 100;
+    int arr[maxSize];
+    int size;
+    std::cout << "Enter the size of the array: ";
+    std::cin >> size;
+    std::cout << "Enter the array elements: ";
+    for (int i = 0; i < size; ++i) {
+        std::cin >> arr[i];
+    }
+    int secondLargest = findSecondLargest(arr, size);
+
+    if (secondLargest != -1) {
+        std::cout << "Second largest element in the array: " << secondLargest << std::endl;
+    }
+
+    return 0;
+}
