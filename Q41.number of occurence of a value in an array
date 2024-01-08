@@ -1,0 +1,29 @@
+#include <iostream>
+int countOccurrences(const int arr[], int size, int target) {
+    int count = 0;
+    for (int i = 0; i < size; ++i) {
+        if (arr[i] == target) {
+            ++count;
+        }
+    }
+
+    return count;
+}
+
+int main() {
+    const int maxSize = 100;
+    int arr[maxSize];
+    int size, target;
+    std::cout << "Enter the size of the array: ";
+    std::cin >> size;
+    std::cout << "Enter the array elements: ";
+    for (int i = 0; i < size; ++i) {
+        std::cin >> arr[i];
+    }
+    std::cout << "Enter the value to find occurrences: ";
+    std::cin >> target;
+    int occurrences = countOccurrences(arr, size, target);
+    std::cout << "Number of occurrences of " << target << " in the array: " << occurrences << std::endl;
+
+    return 0;
+}
