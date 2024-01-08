@@ -1,0 +1,52 @@
+#include <iostream>
+void addMatrices(const int mat1[][100], const int mat2[][100], int result[][100], int rows, int cols) {
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            result[i][j] = mat1[i][j] + mat2[i][j];
+        }
+    }
+}
+void displayMatrix(const int matrix[][100], int rows, int cols) {
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            std::cout << matrix[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+
+int main() {
+    const int maxRows = 100;
+    const int maxCols = 100;
+    int mat1[maxRows][maxCols], mat2[maxRows][maxCols], result[maxRows][maxCols];
+    int rows, cols;
+    std::cout << "Enter the number of rows: ";
+    std::cin >> rows;
+    std::cout << "Enter the number of columns: ";
+    std::cin >> cols;
+    std::cout << "Enter elements for the first matrix:" << std::endl;
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            std::cout << "Enter element at position (" << i << ", " << j << "): ";
+            std::cin >> mat1[i][j];
+        }
+    }
+    std::cout << "Enter elements for the second matrix:" << std::endl;
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            std::cout << "Enter element at position (" << i << ", " << j << "): ";
+            std::cin >> mat2[i][j];
+        }
+    }
+    addMatrices(mat1, mat2, result, rows, cols);
+    std::cout << "Matrix 1:" << std::endl;
+    displayMatrix(mat1, rows, cols);
+
+    std::cout << "Matrix 2:" << std::endl;
+    displayMatrix(mat2, rows, cols);
+
+    std::cout << "Sum of the matrices:" << std::endl;
+    displayMatrix(result, rows, cols);
+
+    return 0;
+}
