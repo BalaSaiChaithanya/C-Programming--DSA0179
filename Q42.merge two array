@@ -1,0 +1,48 @@
+#include <iostream>
+void mergeArrays(const int arr1[], int size1, const int arr2[], int size2, int mergedArr[]) {
+    int i = 0, j = 0, k = 0;
+    while (i < size1 && j < size2) {
+        if (arr1[i] < arr2[j]) {
+            mergedArr[k++] = arr1[i++];
+        } else {
+            mergedArr[k++] = arr2[j++];
+        }
+    }
+    while (i < size1) {
+        mergedArr[k++] = arr1[i++];
+    }
+    while (j < size2) {
+        mergedArr[k++] = arr2[j++];
+    }
+}
+void displayArray(const int arr[], int size) {
+    std::cout << "Merged array elements: ";
+    for (int i = 0; i < size; ++i) {
+        std::cout << arr[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
+int main() {
+    const int maxSize = 100;
+    int arr1[maxSize], arr2[maxSize];
+    int size1, size2;
+    std::cout << "Enter the size of the first array: ";
+    std::cin >> size1;
+    std::cout << "Enter the elements of the first array: ";
+    for (int i = 0; i < size1; ++i) {
+        std::cin >> arr1[i];
+    }
+    std::cout << "Enter the size of the second array: ";
+    std::cin >> size2;
+    std::cout << "Enter the elements of the second array: ";
+    for (int i = 0; i < size2; ++i) {
+        std::cin >> arr2[i];
+    }
+    int mergedSize = size1 + size2;
+    int mergedArr[maxSize];
+    mergeArrays(arr1, size1, arr2, size2, mergedArr);
+    displayArray(mergedArr, mergedSize);
+
+    return 0;
+}
