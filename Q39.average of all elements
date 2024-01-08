@@ -1,0 +1,27 @@
+#include <iostream>
+double findAverage(const int arr[], int size) {
+    if (size == 0) {
+        return 0.0;
+    }
+    int sum = 0;
+    for (int i = 0; i < size; ++i) {
+        sum += arr[i];
+    }
+    return static_cast<double>(sum) / size;
+}
+
+int main() {
+    const int maxSize = 100;
+    int arr[maxSize];
+    int size;
+    std::cout << "Enter the size of the array: ";
+    std::cin >> size;
+    std::cout << "Enter the list of array elements: ";
+    for (int i = 0; i < size; ++i) {
+        std::cin >> arr[i];
+    }
+    double average = findAverage(arr, size);
+    std::cout << "Average of array elements: " << average << std::endl;
+
+    return 0;
+}
