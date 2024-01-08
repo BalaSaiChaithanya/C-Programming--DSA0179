@@ -1,0 +1,24 @@
+#include <iostream>
+int findSum(const int arr[], int size) {
+    int sum = 0;
+    for (int i = 0; i < size; ++i) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+int main() {
+    const int maxSize = 100;
+    int arr[maxSize];
+    int size;
+    std::cout << "Enter the size of the array: ";
+    std::cin >> size;
+    std::cout << "Enter the array elements: ";
+    for (int i = 0; i < size; ++i) {
+        std::cin >> arr[i];
+    }
+    int sum = findSum(arr, size);
+    std::cout << "Sum of array elements: " << sum << std::endl;
+
+    return 0;
+}
