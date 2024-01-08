@@ -1,0 +1,65 @@
+#include <iostream>
+void multiplyMatrices(const int mat1[][100], const int mat2[][100], int result[][100], int rows1, int cols1, int rows2, int cols2) {
+    if (cols1 != rows2) {
+        std::cout << "Matrices cannot be multiplied. Invalid dimensions." << std::endl;
+        return;
+    }
+    for (int i = 0; i < rows1; ++i) {
+        for (int j = 0; j < cols2; ++j) {
+            result[i][j] = 0;
+            for (int k = 0; k < cols1; ++k) {
+                result[i][j] += mat1[i][k] * mat2[k][j];
+            }
+        }
+    }
+}
+void displayMatrix(const int matrix[][100], int rows, int cols) {
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            std::cout << matrix[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+
+int main() {
+    const int maxRows1 = 100;
+    const int maxCols1 = 100;
+    const int maxRows2 = 100;
+    const int maxCols2 = 100;
+    int mat1[maxRows1][maxCols1], mat2[maxRows2][maxCols2], result[maxRows1][maxCols2];
+    int rows1, cols1, rows2, cols2;
+    std::cout << "Enter the number of rows for the first matrix: ";
+    std::cin >> rows1;
+    std::cout << "Enter the number of columns for the first matrix: ";
+    std::cin >> cols1;
+    std::cout << "Enter elements for the first matrix:" << std::endl;
+    for (int i = 0; i < rows1; ++i) {
+        for (int j = 0; j < cols1; ++j) {
+            std::cout << "Enter element at position (" << i << ", " << j << "): ";
+            std::cin >> mat1[i][j];
+        }
+    }
+    std::cout << "Enter the number of rows for the second matrix: ";
+    std::cin >> rows2;
+    std::cout << "Enter the number of columns for the second matrix: ";
+    std::cin >> cols2;
+    std::cout << "Enter elements for the second matrix:" << std::endl;
+    for (int i = 0; i < rows2; ++i) {
+        for (int j = 0; j < cols2; ++j) {
+            std::cout << "Enter element at position (" << i << ", " << j << "): ";
+            std::cin >> mat2[i][j];
+        }
+    }
+    multiplyMatrices(mat1, mat2, result, rows1, cols1, rows2, cols2);
+    std::cout << "Matrix 1:" << std::endl;
+    displayMatrix(mat1, rows1, cols1);
+
+    std::cout << "Matrix 2:" << std::endl;
+    displayMatrix(mat2, rows2, cols2);
+
+    std::cout << "Product of the matrices:" << std::endl;
+    displayMatrix(result, rows1, cols2);
+
+    return 0;
+}
